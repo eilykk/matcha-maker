@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1jvu05goab1g"]
+
+[ext_resource type="Texture2D" uid="uid://6dr6m5nkybbs" path="res://assets/sprites/empty_glass cabinet.png" id="1_eelim"]
+[ext_resource type="Texture2D" uid="uid://yk5o1c76u8y2" path="res://assets/sprites/drink_sprite.png" id="2_28thd"]
+[ext_resource type="Script" path="res://scripts/Glass.gd" id="2_plog1"]
+[ext_resource type="PackedScene" uid="uid://bpfxbket38imf" path="res://interaction/interaction area/interaction_area.tscn" id="4_pby1m"]
+[ext_resource type="Texture2D" uid="uid://dfl5gforlhdt5" path="res://assets/sprites/arrow.png" id="5_3413u"]
+[ext_resource type="FontFile" uid="uid://b0x14eufu44np" path="res://assets/DTM-Sans.otf" id="6_hpw7v"]
+[ext_resource type="Texture2D" uid="uid://cmjdhbm2ylfoj" path="res://assets/sprites/whisk.png" id="7_jywjs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlktj"]
+size = Vector2(326.25, 446)
+
+[node name="GlassCabinetView" type="Node2D"]
+
+[node name="EmptyGlassCabinet" type="Sprite2D" parent="."]
+position = Vector2(-3, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_eelim")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Glass" type="Node2D" parent="."]
+position = Vector2(128, 0)
+script = ExtResource("2_plog1")
+
+[node name="DrinkSprite" type="Sprite2D" parent="Glass"]
+position = Vector2(249, 86.0001)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_28thd")
+hframes = 5
+vframes = 2
+frame = 5
+
+[node name="ClickInteractionArea" parent="Glass" instance=ExtResource("4_pby1m")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Glass/ClickInteractionArea"]
+position = Vector2(297, 220)
+shape = SubResource("RectangleShape2D_dlktj")
+
+[node name="exit" type="Node2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="exit"]
+position = Vector2(-545, -398)
+rotation = -1.5708
+texture = ExtResource("5_3413u")
+
+[node name="Label" type="Label" parent="exit"]
+offset_left = -487.0
+offset_top = -421.0
+offset_right = -297.0
+offset_bottom = -384.0
+theme_override_fonts/font = ExtResource("6_hpw7v")
+theme_override_font_sizes/font_size = 30
+text = "click to exit"
+
+[node name="Whisk" type="Sprite2D" parent="."]
+position = Vector2(114, 259)
+scale = Vector2(2, 2)
+texture = ExtResource("7_jywjs")
+hframes = 3

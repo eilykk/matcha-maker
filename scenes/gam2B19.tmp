@@ -1,0 +1,173 @@
+[gd_scene load_steps=22 format=3 uid="uid://ct6tl6x4v8vu0"]
+
+[ext_resource type="PackedScene" uid="uid://bb8qbheo18r01" path="res://scenes/player.tscn" id="1_2ukoo"]
+[ext_resource type="Texture2D" uid="uid://coftelrn32fx1" path="res://assets/sprites/emptykitchen.png" id="1_g18d3"]
+[ext_resource type="Texture2D" uid="uid://4suh2v04y2bu" path="res://assets/sprites/table.png" id="3_xbgy2"]
+[ext_resource type="Script" path="res://scripts/Teapot.gd" id="4_5te6q"]
+[ext_resource type="Texture2D" uid="uid://crnvtguehmgio" path="res://assets/sprites/teapot_highlight.png" id="4_ymist"]
+[ext_resource type="Texture2D" uid="uid://b01th0lw8f688" path="res://assets/sprites/fridge_highlight.png" id="5_ls7q3"]
+[ext_resource type="PackedScene" uid="uid://bpfxbket38imf" path="res://interaction/interaction area/interaction_area.tscn" id="6_jh5dv"]
+[ext_resource type="Texture2D" uid="uid://bvn6jtyhitrw6" path="res://assets/sprites/cabinett_highlight.png" id="6_x5ddu"]
+[ext_resource type="Script" path="res://scripts/Fridge.gd" id="7_k2tlb"]
+[ext_resource type="Script" path="res://scripts/Cabinet.gd" id="9_v1ojx"]
+[ext_resource type="Script" path="res://scripts/GlassCabinet.gd" id="11_i6giv"]
+[ext_resource type="PackedScene" uid="uid://cqiwp5a7176to" path="res://scenes/TextBox.tscn" id="12_4gayd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs6rs"]
+size = Vector2(1100, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0tc8"]
+size = Vector2(1539, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du6ka"]
+size = Vector2(1349, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuo3i"]
+size = Vector2(1139, 108.998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jminw"]
+size = Vector2(952.001, 201.998)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uk32r"]
+radius = 75.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdfap"]
+size = Vector2(121.5, 236.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju15b"]
+size = Vector2(125.5, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvsyv"]
+size = Vector2(116, 246)
+
+[node name="game" type="Node2D"]
+
+[node name="Kitchen" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_g18d3")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_2ukoo")]
+z_index = 1
+position = Vector2(382, 48)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -650
+limit_top = -500
+limit_right = 650
+limit_bottom = 500
+
+[node name="left wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(-602, 56)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall"]
+position = Vector2(-64.0003, -42.5001)
+shape = SubResource("RectangleShape2D_hs6rs")
+
+[node name="top wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(0, -189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top wall"]
+position = Vector2(40, -80)
+shape = SubResource("RectangleShape2D_v0tc8")
+
+[node name="floor" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(-1, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(-2, -20)
+shape = SubResource("RectangleShape2D_du6ka")
+
+[node name="right wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(679, 106)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right wall"]
+position = Vector2(-81, -3.99968)
+shape = SubResource("RectangleShape2D_vuo3i")
+
+[node name="counter" type="StaticBody2D" parent="."]
+position = Vector2(572.998, 785)
+rotation = -3.14159
+
+[node name="Table" type="Sprite2D" parent="counter"]
+z_index = 2
+position = Vector2(689.001, 471.995)
+rotation = 3.14159
+scale = Vector2(2, 2)
+texture = ExtResource("3_xbgy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="counter"]
+visible = false
+position = Vector2(751.002, 436.995)
+shape = SubResource("RectangleShape2D_jminw")
+
+[node name="Teapot" type="Node2D" parent="."]
+position = Vector2(-567, -117)
+scale = Vector2(2, 2)
+script = ExtResource("4_5te6q")
+
+[node name="TeapotHighlight" type="Sprite2D" parent="Teapot"]
+position = Vector2(-3.05176e-05, -3.05176e-05)
+texture = ExtResource("4_ymist")
+
+[node name="InteractionArea" parent="Teapot" instance=ExtResource("6_jh5dv")]
+action_name = "collect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teapot/InteractionArea"]
+position = Vector2(-3.05176e-05, 17)
+shape = SubResource("CircleShape2D_uk32r")
+
+[node name="Fridge" type="Node2D" parent="."]
+position = Vector2(-143, -227)
+scale = Vector2(2, 2)
+script = ExtResource("7_k2tlb")
+
+[node name="FridgeHighlight" type="Sprite2D" parent="Fridge"]
+texture = ExtResource("5_ls7q3")
+
+[node name="InteractionArea" parent="Fridge" instance=ExtResource("6_jh5dv")]
+action_name = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fridge/InteractionArea"]
+position = Vector2(-1.75, 13.75)
+shape = SubResource("RectangleShape2D_jdfap")
+
+[node name="Cabinet" type="Node2D" parent="."]
+position = Vector2(-386, -437)
+scale = Vector2(2, 2)
+script = ExtResource("9_v1ojx")
+
+[node name="CabinettHighlight" type="Sprite2D" parent="Cabinet"]
+texture = ExtResource("6_x5ddu")
+
+[node name="InteractionArea" parent="Cabinet" instance=ExtResource("6_jh5dv")]
+action_name = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet/InteractionArea"]
+position = Vector2(1.75, 113.5)
+shape = SubResource("RectangleShape2D_ju15b")
+
+[node name="GlassCabinet" type="Node2D" parent="."]
+position = Vector2(78, -437)
+scale = Vector2(2, 2)
+script = ExtResource("11_i6giv")
+
+[node name="GlassCabinetHighlight" type="Sprite2D" parent="GlassCabinet"]
+texture = ExtResource("6_x5ddu")
+
+[node name="InteractionArea" parent="GlassCabinet" instance=ExtResource("6_jh5dv")]
+action_name = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlassCabinet/InteractionArea"]
+position = Vector2(4.5, 113)
+shape = SubResource("RectangleShape2D_jvsyv")
+
+[node name="TextBox" parent="." instance=ExtResource("12_4gayd")]
+offset = Vector2(-650, -500)
+transform = Transform2D(1, 0, 0, 1, -650, -500)

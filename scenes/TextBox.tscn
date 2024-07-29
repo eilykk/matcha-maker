@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqiwp5a7176to"]
+
+[ext_resource type="FontFile" uid="uid://b0x14eufu44np" path="res://assets/DTM-Sans.otf" id="1_n0sod"]
+[ext_resource type="Script" path="res://scripts/TextBox.gd" id="1_rt2bb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq45a"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="TextBox" type="CanvasLayer"]
+script = ExtResource("1_rt2bb")
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+z_index = 18
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -238.0
+offset_right = -41.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bq45a")
+
+[node name="TextContainer" type="MarginContainer" parent="."]
+z_index = 19
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.853
+anchor_right = 0.5
+anchor_bottom = 0.853
+offset_left = -566.0
+offset_top = -59.0001
+offset_right = 566.0
+offset_bottom = 77.9999
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextContainer"]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="TextContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_n0sod")
+theme_override_font_sizes/font_size = 40
+text = "*"
+
+[node name="Text" type="Label" parent="TextContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_n0sod")
+theme_override_font_sizes/font_size = 40
+text = "Hello World!"
+autowrap_mode = 3
+clip_text = true
+
+[node name="End" type="Label" parent="TextContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_n0sod")
+theme_override_font_sizes/font_size = 40
+text = "v"
+horizontal_alignment = 2

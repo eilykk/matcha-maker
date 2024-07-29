@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://byjeftx45r277"]
+
+[ext_resource type="Texture2D" uid="uid://bv4s8yhfpx64x" path="res://assets/sprites/emptycabinet.png" id="1_goiey"]
+[ext_resource type="Texture2D" uid="uid://c7pw5a7ckjfr6" path="res://assets/sprites/spon.png" id="2_qs5xg"]
+[ext_resource type="Texture2D" uid="uid://cq0wulqyit7rt" path="res://assets/sprites/strainr.png" id="3_7rv7y"]
+[ext_resource type="Texture2D" uid="uid://dbflgktashv3w" path="res://assets/sprites/matcha.png" id="5_i1wdh"]
+[ext_resource type="Texture2D" uid="uid://bffjgyocuw7rk" path="res://assets/sprites/cup.png" id="6_dxhuf"]
+[ext_resource type="Texture2D" uid="uid://dfl5gforlhdt5" path="res://assets/sprites/arrow.png" id="7_prcqe"]
+[ext_resource type="FontFile" uid="uid://b0x14eufu44np" path="res://assets/DTM-Sans.otf" id="8_ffm53"]
+
+[node name="CabinetView" type="Node2D"]
+
+[node name="Emptycabinet" type="Sprite2D" parent="."]
+position = Vector2(1, -7.25519)
+scale = Vector2(2, 2)
+texture = ExtResource("1_goiey")
+
+[node name="Spon" type="Sprite2D" parent="."]
+position = Vector2(455, 374)
+rotation = -0.71384
+scale = Vector2(2, 2)
+texture = ExtResource("2_qs5xg")
+hframes = 2
+
+[node name="Strainr" type="Sprite2D" parent="."]
+position = Vector2(287, -404)
+rotation = -0.410152
+scale = Vector2(2, 2)
+texture = ExtResource("3_7rv7y")
+hframes = 3
+
+[node name="Matcha" type="Sprite2D" parent="."]
+position = Vector2(174, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("5_i1wdh")
+hframes = 2
+
+[node name="Cup" type="Sprite2D" parent="."]
+position = Vector2(276, -151)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dxhuf")
+hframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="exit" type="Node2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="exit"]
+position = Vector2(-545, -398)
+rotation = -1.5708
+texture = ExtResource("7_prcqe")
+
+[node name="Label" type="Label" parent="exit"]
+offset_left = -486.0
+offset_top = -422.0
+offset_right = -296.0
+offset_bottom = -385.0
+theme_override_fonts/font = ExtResource("8_ffm53")
+theme_override_font_sizes/font_size = 30
+text = "click to exit"

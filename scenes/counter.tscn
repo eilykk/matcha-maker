@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7svdjio0mvsa"]
+
+[ext_resource type="Texture2D" uid="uid://qm2sj8qmpmni" path="res://assets/sprites/counter.png" id="1_5bvj6"]
+[ext_resource type="Script" path="res://scripts/counter.gd" id="1_52ml7"]
+[ext_resource type="Texture2D" uid="uid://b2kkwyrpaldjt" path="res://assets/sprites/cocmilk.png" id="2_rwmb4"]
+[ext_resource type="Texture2D" uid="uid://s382l0mgscnu" path="res://assets/sprites/teapot.png" id="3_lorwj"]
+[ext_resource type="Texture2D" uid="uid://dbflgktashv3w" path="res://assets/sprites/matcha.png" id="4_b2eb1"]
+[ext_resource type="Texture2D" uid="uid://yk5o1c76u8y2" path="res://assets/sprites/drink_sprite.png" id="5_5x5th"]
+[ext_resource type="Texture2D" uid="uid://bffjgyocuw7rk" path="res://assets/sprites/cup.png" id="6_rxysd"]
+[ext_resource type="Texture2D" uid="uid://cmjdhbm2ylfoj" path="res://assets/sprites/whisk.png" id="7_2x2hp"]
+
+[node name="Counter" type="Node2D"]
+script = ExtResource("1_52ml7")
+
+[node name="Counter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_5bvj6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Cocmilk" type="Sprite2D" parent="."]
+position = Vector2(309, -177)
+scale = Vector2(2, 2)
+texture = ExtResource("2_rwmb4")
+
+[node name="Teapot" type="Sprite2D" parent="."]
+position = Vector2(-248, -261)
+scale = Vector2(2, 2)
+texture = ExtResource("3_lorwj")
+
+[node name="Matcha" type="Sprite2D" parent="."]
+position = Vector2(-190, 149)
+scale = Vector2(2, 2)
+texture = ExtResource("4_b2eb1")
+hframes = 2
+frame = 1
+
+[node name="DrinkSprite" type="Sprite2D" parent="."]
+position = Vector2(400, 49)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_5x5th")
+hframes = 5
+vframes = 2
+frame = 6
+
+[node name="Cup" type="Sprite2D" parent="."]
+position = Vector2(-24, 170)
+scale = Vector2(2, 2)
+texture = ExtResource("6_rxysd")
+hframes = 3
+
+[node name="Whisk" type="Sprite2D" parent="."]
+position = Vector2(-537, 203)
+scale = Vector2(2, 2)
+texture = ExtResource("7_2x2hp")
+hframes = 3

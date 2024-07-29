@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcjboh28u7vk"]
+
+[ext_resource type="Texture2D" uid="uid://ct5ur4tj1un0e" path="res://assets/sprites/freezer.png" id="1_hkoin"]
+[ext_resource type="Texture2D" uid="uid://dfl5gforlhdt5" path="res://assets/sprites/arrow.png" id="2_uqafe"]
+
+[node name="FreezerView" type="Node2D"]
+
+[node name="Freezer" type="Sprite2D" parent="."]
+position = Vector2(653, 508)
+scale = Vector2(2, 2)
+texture = ExtResource("1_hkoin")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(127, 846)
+rotation = -1.5708
+texture = ExtResource("2_uqafe")
