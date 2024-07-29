@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3cpx0wtrxw7f"]
+
+[ext_resource type="Script" path="res://interaction/interaction area/click_interaction_area.gd" id="1_qhldt"]
+
+[node name="ClickInteractionArea" type="Area2D"]
+light_mask = 0
+visibility_layer = 2
+script = ExtResource("1_qhldt")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

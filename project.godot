@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://interaction/InteractionManager.tscn"
+ClickInteractionManager="*res://interaction/ClickInteractionManager.tscn"
+Globals="*res://scripts/MyGlobals.gd"
 
 [display]
 

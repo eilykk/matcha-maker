@@ -10,3 +10,5 @@ func _ready():
 func _on_interact():
 	sprite.visible = false
 	interaction_area.can_interact = false
+	Globals.objects["teapot"] = true
+	Globals.test_ready()

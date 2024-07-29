@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://but1ofniequbj"]
+
+[ext_resource type="FontFile" uid="uid://b0x14eufu44np" path="res://assets/DTM-Sans.otf" id="1_rq44l"]
+
+[sub_resource type="GDScript" id="GDScript_jygv0"]
+script/source = "extends Node2D
+
+@onready var label = $Label
+
+const base_text = \"[left click] to \"
+
+var active_areas = []
+var can_interact = true
+
+func register(area: ClickInteractionArea):
+	if area.can_interact:
+		active_areas.push_back(area)
+
+func unregister(area: ClickInteractionArea):
+	var index = active_areas.find(area)
+	if index != -1: 
+		active_areas.remove_at(index)
+	
+func _process(_delta): 
+	while is_instance_valid(active_areas) && active_areas.size() > 0 && !active_areas[0].can_interact:
+		active_areas.remove_at(0)
+	if active_areas.size() > 0 && can_interact && is_instance_valid(active_areas[0]):
+		label.text = base_text + active_areas[0].action_name
+		label.global_position = active_areas[0].global_position
+		label.global_position.y -= 60
+		label.global_position.x -= label.size.x / 3.5
+		label.show()
+	else: 
+		label.hide()
+		
+
+func _input(event):
+	if event.is_action_pressed(\"click\") && can_interact:
+		if active_areas.size() > 0:
+			can_interact = false
+			label.hide()
+			
+			await active_areas[0].interact.call()
+			
+			can_interact = true
+"
+
+[node name="ClickInteractionManager" type="Node2D"]
+script = SubResource("GDScript_jygv0")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -23.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_rq44l")
+theme_override_font_sizes/font_size = 30
+text = "[left click] to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
